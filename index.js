@@ -1,6 +1,8 @@
 const puppeteer = require("puppeteer");
 const express = require("express");
 const app = express();
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
 const port = process.env.PORT || 3000;
 
 app.get("/puppeteer", async (req, res) => {
@@ -12,24 +14,42 @@ app.get("/puppeteer", async (req, res) => {
       "--hide-scrollbars",
       "--disable-web-security",
     ],
-    headless: true,
+    headless: 'new',
     executablePath: '/usr/bin/google-chrome'
   });
-  const url = decodeURIComponent(req.query.url);
+  const urlLogin: string = req.query.url;
+  axios.get(url, {
+    headers: {
+      Cookie: "GaligeoToken=" + req.cookies["GaligeoToken"],
+    },
+  })
+    .then(function (response) {
+      res.send(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+      next(error);
+    });
+  const url = decodeURI(req.query.link);
+  console.log(url);
   const width = req.query.width;
   const height = req.query.height;
   const page = await browser.newPage();
-  // to add cookie
-  /*const cos = [
+  const cookies = req.cookies;
+  const objCoos = cookieParser.JSONCookies(cookies);
+  console.log(objCoos.GaligeoToken);
+  const cos = [
     {
       name: "GaligeoToken",
-      value: req.params.token,
-      domain: "localhost",
-      path: "/Galigeo/",
+      value: objCoos.GaligeoToken,
+      domain: "ggobo42sp7",
+      path: "/",
     },
   ];
-  await page.setCookie(...cos);*/
-  await page.setViewport({ width: width ? width : 1080, height: height ? height : 1024 });
+await page.setCookie(...cos);
+
+  console.log('setViewport');
+  await page.setViewport({ width:  1080, height : 1024 });
   await page.goto(
     url,
     {
