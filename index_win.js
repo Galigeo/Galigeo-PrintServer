@@ -55,9 +55,9 @@ app.get("/puppeteer", async (req, res) => {
   let imgIsCached = false;
   await page.waitForResponse(
     async (response) => {
-      //console.log(response.url());
-      if ((first + 5000) < Date.now()) {
-        console.log('force exit afer 40000 ms');
+      console.log(response.url());
+      if ((first + 60000) < Date.now()) {
+        console.log('force exit afer 60000 ms');
         return true;
       }
       if (response.url().includes("cache")) {
