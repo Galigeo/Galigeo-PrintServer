@@ -1,3 +1,4 @@
+
 const puppeteer = require("puppeteer");
 const express = require("express");
 const app = express();
@@ -22,8 +23,9 @@ app.get("/puppeteer", async (req, res) => {
   });
   console.log('start call');
   const url = decodeURIComponent(req.query.url);
-  const width = req.query.width;
-  const height = req.query.height;
+  console.log(req.query);
+  const width = parseInt(req.query.width) ;
+  const height =  parseInt(req.query.height);
   const page = await browser.newPage();
   // to add cookie
   console.log(url);
@@ -42,8 +44,26 @@ app.get("/puppeteer", async (req, res) => {
   await page.setCookie(...cos);
 
 
-  await page.setViewport({ width: 1080, height: 1024 });
+  await page.setViewport({ width: width ? width : 1080, height: height? height :1024 });
   console.log('setViewport');
+  const { blue, cyan, green, magenta, red, yellow } = require('colorette')
+  page
+    .on('console', message => {
+      const type = message.type().substr(0, 3).toUpperCase()
+      const colors = {
+        LOG: text => text,
+        ERR: red,
+        WAR: yellow,
+        INF: cyan
+      }
+      const color = colors[type] || blue
+      console.log(color(`${type} ${message.text()}`))
+    })
+    .on('pageerror', ({ message }) => console.log(red(message)))
+    .on('response', response =>
+      console.log(green(`${response.status()} ${response.url()}`)))
+    .on('requestfailed', request =>
+      console.log(magenta(`${request.failure().errorText} ${request.url()}`)))
   await page.goto(
     url,
     {
@@ -55,7 +75,7 @@ app.get("/puppeteer", async (req, res) => {
   let imgIsCached = false;
   await page.waitForResponse(
     async (response) => {
-      console.log(response.url());
+      //console.log(response.url());
       if ((first + 60000) < Date.now()) {
         console.log('force exit afer 60000 ms');
         return true;
