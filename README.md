@@ -18,7 +18,7 @@ Example from \<GALIGEO_HOME\>/config/**gaia.properties**:
 
 ## 2.2 How to build docker image **galigeo-print-server.tar**  and run it in another docker ?
 
-**A - Build galigeo-print-server.tar on your docker**
+### **A - Build galigeo-print-server.tar on your docker**
 - Build docker image from Dockerfile:
 
 **docker build . -t galigeo-print-server -f ./Dockerfile** 
@@ -27,7 +27,7 @@ Example from \<GALIGEO_HOME\>/config/**gaia.properties**:
 
 **docker save -o galigeo-print-server.tar galigeo-print-server:latest** 
 
-**B - Run galigeo-print-server.tar on another docker (e.g. production docker)**
+### **B - Run galigeo-print-server.tar on another docker (e.g. production docker)**
 
 - Get **galigeo-print-server.tar** from Galigeo
 
