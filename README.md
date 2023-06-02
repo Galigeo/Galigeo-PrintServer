@@ -1,7 +1,7 @@
 # 1. Config gaia.properties
 print_puppeteer_url=url of the server ==> http://localhost:3000/puppeteer
 
-# 2. How to Install and run with Docker
+# 2. How to install and run with Docker
 # 2.1 How to build docker image from **Dockerfile** and run it ?
 
 - Build docker image from Dockerfile:
