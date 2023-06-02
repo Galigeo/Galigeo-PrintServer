@@ -1,7 +1,7 @@
 # 1. gaia.properties configuration
-print_puppeteer_url=url of the server ==> http://**print-server-name-or-ip**:3000/puppeteer
+print_puppeteer_url=url of the server ==> http://\<**print-server-name-or-ip**\>:3000/puppeteer
 
-Example from gaia.properties:
+Example from \<GALIGEO_HOME\>/config/**gaia.properties**:
 
 **print_puppeteer_url**=http\\://ggo-print-server\\:3000/puppeteer
 
