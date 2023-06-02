@@ -1,8 +1,12 @@
-# 1. Config gaia.properties
-print_puppeteer_url=url of the server ==> http://localhost:3000/puppeteer
+# 1. gaia.properties configuration
+print_puppeteer_url=url of the server ==> http://**print-server-name-or-ip**:3000/puppeteer
+
+Example from gaia.properties:
+
+**print_puppeteer_url**=http\\://ggo-print-server\\:3000/puppeteer
 
 # 2. How to install and run with Docker
-# 2.1 How to build docker image from **Dockerfile** and run it ?
+## 2.1 How to build docker image from **Dockerfile** and run it ?
 
 - Build docker image from Dockerfile:
 
@@ -12,7 +16,7 @@ print_puppeteer_url=url of the server ==> http://localhost:3000/puppeteer
 
 **docker run --rm -p 3000:3000 galigeo-print-server**
 
-# 2.2 How to build docker image **galigeo-print-server.tar**  and run it in another docker ?
+## 2.2 How to build docker image **galigeo-print-server.tar**  and run it in another docker ?
 
 **A - Build galigeo-print-server.tar on your docker**
 - Build docker image from Dockerfile:
