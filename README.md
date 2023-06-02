@@ -1,7 +1,7 @@
 # 1. Config gaia.properties
 print_puppeteer_url=url of the server ==> http://localhost:3000/puppeteer
 
-# 2. Install with Docker
+# 2. How to Install and run with Docker
 # 2.1 How to build docker image from **Dockerfile** and run it ?
 
 - Build docker image from Dockerfile:
@@ -37,11 +37,11 @@ print_puppeteer_url=url of the server ==> http://localhost:3000/puppeteer
 
 # 3. How to install and run on Windows
 
-- Install nodeJs:
+- Install nodeJs / build galigeo-print-server:
 
 **npm install**
 
-- Run it:
+- Run galigeo-print-server:
 
 **npm run start**
 
