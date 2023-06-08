@@ -49,3 +49,6 @@ Example from \<GALIGEO_HOME\>/config/**gaia.properties**:
 
 **npm run start**
 
+
+# Test server is running 
+http://\<**print-server-name-or-ip**\>:3000/alive

@@ -9,8 +9,11 @@ app.use(cookieParser());
 
 
 const port = process.env.PORT || 3000;
-
+app.get("/alive", async (req, res) => {
+  res.send({ message: "I m alive" });
+});
 app.get("/puppeteer", async (req, res) => {
+   try {
   const browser = await puppeteer.launch({
     args: [
       "--no-sandbox",
@@ -100,7 +103,9 @@ app.get("/puppeteer", async (req, res) => {
     res.send({ message: "time out" });
   }
   //res.send({ message: "Image is in cache folder" });
-
+} catch (error) {
+    res.send({ log:error,message: 'print server can t print image' });
+  }
 });
 
 app.listen(port, () => {
