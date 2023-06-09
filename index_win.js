@@ -10,7 +10,7 @@ app.use(cookieParser());
 
 const port = process.env.PORT || 3000;
 app.get("/alive", async (req, res) => {
-  res.send({ message: "I m alive" });
+  res.send({ message: "Galigeo Print Server is up and running on container port " + port });
 });
 app.get("/puppeteer", async (req, res) => {
   try {
@@ -113,5 +113,5 @@ app.get("/puppeteer", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("Server app listening on port " + port);
+  console.log("Galigeo Print Server is listening on container port " + port);
 });
