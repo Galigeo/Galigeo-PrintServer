@@ -99,11 +99,15 @@ app.get("/puppeteer", async (req, res) => {
     res.set({ "Content-Type": "application/json" });
     if (imgIsCached) {
       res.send({ message: "Image is in cache folder" });
+	  console.log("Image is in cache folder");
     } else {
-      res.send({ message: "time out" });
+      res.send({ message: "time out after 60 s" });
+	  console.log("time out after 60 s");
     }
   } catch (error) {
     res.send({ log:error,message: 'print server can t print image' });
+	console.log('print server can t print image');
+	console.log('error:',error);
   }
 
 });
