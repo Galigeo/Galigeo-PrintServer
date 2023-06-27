@@ -53,7 +53,7 @@ Example from \<GALIGEO_HOME\>/config/**gaia.properties**:
 # 4. Test server is running
 http://\<**print-server-name-or-ip**\>:3000/alive
 
-Output : {"message":"Galigeo Print Server is up and running on container port 3000"}
+Output : *{"message":"Galigeo Print Server is up and running on container port 3000"}*
 
 # 5. Logs set up
 ## 5.1 "local" Log driver set up
