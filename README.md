@@ -87,7 +87,11 @@ Output: *local*
 ## 5.2 Get the Logs
 ### **A - Get galigeo-print-server <CONTAINER_ID>**
 
-**docker ps** or **docker ps -a -q  --filter ancestor=galigeo-print-server**
+**docker ps** 
+
+or
+
+**docker ps -a -q  --filter ancestor=galigeo-print-server**
 
 Ouput: *843a9085753b*
 
