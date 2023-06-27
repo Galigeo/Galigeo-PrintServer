@@ -64,7 +64,7 @@ By default Docker uses the "json-file" log driver:
 
 **In other situations, "local" log driver is recommended** as it uses by default log rotation with an overall size limit of 100MB.
 
-**How to run** galigeo-print-server with "local" log driver ?
+### A - **How to run galigeo-print-server with "local" log driver ?**
 
 **docker run --rm -p 3000:3000 *--log-driver local* galigeo-print-server**
 
@@ -78,21 +78,22 @@ Find below an example that overrides default config:
 
 docker run --rm -p 3000:3000 *--log-driver local --log-opt max-size=10m --log-opt max-file=3 --log-opt compress=false* galigeo-print-server
 
-**How to get the log driver** used by galigeo-print-server container ? Just run:
+### B - **How to get the log driver** used by galigeo-print-server container ? 
 
-docker inspect -f '{{.HostConfig.LogConfig.Type}}' <CONTAINER_ID>
+**docker inspect -f '{{.HostConfig.LogConfig.Type}}' <CONTAINER_ID>**
 
 Output: *local*
 
-
 ## 5.2 Get the Logs
-- Get galigeo-print-server <CONTAINER_ID>:
+### **A - Get galigeo-print-server <CONTAINER_ID>**
 
 **docker ps** or **docker ps -a -q  --filter ancestor=galigeo-print-server**
 
 Ouput: *843a9085753b*
 
-Find below some examples to get the logs:
+### **B - Get containers logs**
+
+Find below some examples. 
 - Display the logs with timestamps
 
 **docker logs --timestamps <CONTAINER_ID>**
