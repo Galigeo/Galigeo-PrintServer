@@ -55,7 +55,7 @@ http://\<**print-server-name-or-ip**\>:3000/alive
 
 Output : *{"message":"Galigeo Print Server is up and running on container port 3000"}*
 
-# 5. Logs set up
+# 5. Docker Logs set up
 ## 5.1 "local" Log driver set up
 By default Docker uses the "json-file" log driver:
 
