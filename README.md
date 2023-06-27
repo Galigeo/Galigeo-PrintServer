@@ -50,5 +50,62 @@ Example from \<GALIGEO_HOME\>/config/**gaia.properties**:
 **npm run start**
 
 
-# Test server is running 
+# 4. Test server is running
 http://\<**print-server-name-or-ip**\>:3000/alive
+
+Output : {"message":"Galigeo Print Server is up and running on container port 3000"}
+
+# 5. Logs set up
+## 5.1 "local" Log driver set up
+By default Docker uses the "json-file" log driver:
+
+- No log rotation and no size limit -> can cause a significant amount of disk space to be used.
+- "json-file" log driver is used for backward compatibility with older versions of Docker, and for situations where Docker is used as runtime for Kubernetes.
+
+**In other situations, "local" log driver is recommended** as it uses by default log rotation with an overall size limit of 100MB.
+
+**How to run** galigeo-print-server with "local" log driver ?
+
+**docker run --rm -p 3000:3000 *--log-driver local* galigeo-print-server**
+
+Info - default configuration for "local" log driver is:
+- **max-size=20m**
+- **max-file=5**
+- **compress=true** (rotated log files are compressed)
+
+
+Find below an example that overrides default config:
+
+docker run --rm -p 3000:3000 *--log-driver local --log-opt max-size=10m --log-opt max-file=3 --log-opt compress=false* galigeo-print-server
+
+**How to get the log driver** used by galigeo-print-server container ? Just run:
+
+docker inspect -f '{{.HostConfig.LogConfig.Type}}' <CONTAINER_ID>
+
+Output: *local*
+
+
+## 5.2 Get the Logs
+- Get galigeo-print-server <CONTAINER_ID>:
+
+**docker ps** or **docker ps -a -q  --filter ancestor=galigeo-print-server**
+
+Ouput: *843a9085753b*
+
+Find below some examples to get the logs:
+- Display the logs with timestamps
+
+**docker logs --timestamps <CONTAINER_ID>**
+
+- Get the logs with timestamps in galigeo-print-server.log file
+
+**docker logs --timestamps <CONTAINER_ID> > galigeo-print-server.log**
+
+- Get the logs since 2023-06-26
+
+**docker logs --timestamps --since 2023-06-26 <CONTAINER_ID> > galigeo-print-server.log**
+
+- Get the logs for the last 45 minutes
+
+**docker logs --timestamps --since 45m <CONTAINER_ID> > galigeo-print-server.log**
+ 
