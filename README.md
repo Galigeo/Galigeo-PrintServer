@@ -6,7 +6,17 @@ Example from \<GALIGEO_HOME\>/config/**gaia.properties**:
 **print_puppeteer_url**=http\\://ggo-print-server\\:3000/puppeteer
 
 # 2. How to install and run with Docker
-## 2.1 How to build docker image from **Dockerfile** and run it ?
+## 2.1 Pre-requisite - **Minimal Docker version: 24.0.2**
+
+Docker image **galigeo-print-server.tar is build**, at jenkins, **with Docker 24.0.2**.
+
+**To run it, Docker minimal version is 24.0.2** (current version on 2023 June).
+
+To know Docker version, run: 
+
+**docker version**
+
+## 2.2 How to build docker image from **Dockerfile** and run it ?
 
 - Build docker image from Dockerfile:
 
@@ -16,7 +26,7 @@ Example from \<GALIGEO_HOME\>/config/**gaia.properties**:
 
 **docker run --rm -p 3000:3000 galigeo-print-server**
 
-## 2.2 How to build docker image **galigeo-print-server.tar**  and run it in another docker ?
+## 2.3 How to build docker image **galigeo-print-server.tar**  and run it in another docker ?
 
 ### **A - Build galigeo-print-server.tar on your docker**
 - Build docker image from Dockerfile:
