@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 app.get("/alive", async (req, res) => {
   res.send({ message: "Galigeo Print Server is up and running on container port " + port });
 });
-app.get("/puppeteer", async (req, res) => {
+app.get("/print", async (req, res) => {
   try {
     const browser = await puppeteer.launch({
       args: [
