@@ -24,7 +24,10 @@ To know Docker version, run:
 
 - Run it in container:
 
-**docker run --rm -p 3000:3000 galigeo-print-server**
+~~**docker run --rm -p 3000:3000 galigeo-print-server**~~
+--> Prefer the one with the more efficient log driver:
+
+**docker run --rm -p 3000:3000 --log-driver local galigeo-print-server**
 
 ## 2.3 How to build docker image **galigeo-print-server.tar**  and run it in another docker ?
 
@@ -47,7 +50,10 @@ To know Docker version, run:
 
 - Run it in container:
 
-**docker run --rm -p 3000:3000 galigeo-print-server**
+~~**docker run --rm -p 3000:3000 galigeo-print-server**~~
+--> Prefer the one with the more efficient log driver:
+
+**docker run --rm -p 3000:3000 --log-driver local galigeo-print-server**
 
 # 3. How to install and run on Windows
 
