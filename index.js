@@ -41,7 +41,7 @@ app.get("/print", async (req, res) => {
     {
       name: "GaligeoToken",
       value: token,
-      domain: "ggobo42sp7",
+      domain: "",
       path: "/",
     },
   ];
