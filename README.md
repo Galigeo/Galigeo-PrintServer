@@ -1,9 +1,9 @@
 # 1. gaia.properties configuration
-**print_server_url**=url of the print server ==> http://\<**print-server-name-or-ip**\>:3000/puppeteer
+**print_server_url**=url of the print server ==> http://\<**print-server-name-or-ip**\>:3000/print
 
 Example from \<GALIGEO_HOME\>/config/**gaia.properties**:
 
-**print_server_url**=http\\://ggo-print-server\\:3000/puppeteer
+**print_server_url**=http\\://ggo-print-server\\:3000/print
 
 # 2. How to install and run with Docker
 ## 2.1 Pre-requisite - **Minimal Docker version: 24.0.2**
