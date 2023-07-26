@@ -55,24 +55,13 @@ To know Docker version, run:
 
 **docker run --rm -p 3000:3000 --log-driver local galigeo-print-server**
 
-# 3. How to install and run on Windows
-
-- Install nodeJs / build galigeo-print-server:
-
-**npm install**
-
-- Run galigeo-print-server:
-
-**npm run start**
-
-
-# 4. Test server is running
+# 3. Test server is running
 http://\<**print-server-name-or-ip**\>:3000/alive
 
 Output : *{"message":"Galigeo Print Server is up and running on container port 3000"}*
 
-# 5. Docker Logs set up
-## 5.1 "local" Log driver set up
+# 4. Docker Logs set up
+## 4.1 "local" Log driver set up
 By default Docker uses the "json-file" log driver:
 
 - No log rotation and no size limit -> can cause a significant amount of disk space to be used.
@@ -100,7 +89,7 @@ docker run --rm -p 3000:3000 *--log-driver local --log-opt max-size=10m --log-op
 
 Output: *local*
 
-## 5.2 Get the Logs
+## 4.2 Get the Logs
 ### **A - Get galigeo-print-server <CONTAINER_ID>**
 
 **docker ps** 
@@ -130,8 +119,8 @@ Find below some examples.
 
 **docker logs --timestamps --since 45m <CONTAINER_ID> > galigeo-print-server.log**
  
- # 6. Docker clean up
- ## 6.1 Stop galigeo-print-server container
+ # 5. Docker clean up
+ ## 5.1 Stop galigeo-print-server container
  - Get galigeo-print-server <CONTAINER_ID>
  
  **docker ps** or **docker ps -a -q  --filter ancestor=galigeo-print-server**
@@ -140,7 +129,7 @@ Find below some examples.
 
 **docker stop <CONTAINER_ID>**
 
- ## 6.2 Remove galigeo-print-server image
+ ## 5.2 Remove galigeo-print-server image
  - Get galigeo-print-server <IMAGE_ID>
  
  **docker images**
