@@ -17,6 +17,7 @@
 		<GIT-Build-galigeo-print-server>${env.GIT_COMMIT}</GIT-Build-galigeo-print-server>
 		<GIT_BRANCH>${env.GIT_BRANCH}</GIT_BRANCH>
 		<JENKINS-Build>${env.BUILD_TAG}</JENKINS-Build>
+		<target.gggo.release>G23 and greater</target.gggo.release>
 		
 		<tar.image.file.name>galigeo-print-server.tar</tar.image.file.name>		
 	</properties>
@@ -80,6 +81,33 @@
 						</configuration>
 					</execution>				
 
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
+				<executions>
+					<execution>
+						<id>copy-version</id>
+						<!-- here the phase you need -->
+						<phase>compile</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>./target</outputDirectory>
+							<resources>
+								<resource>
+									<directory>mvn-resources</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>version.txt</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 			

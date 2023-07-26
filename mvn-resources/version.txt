@@ -1,0 +1,10 @@
+
+Version=${project.artifactId} / ${project.version}
+Target-Galigeo-Version=${target.gggo.release}
+Built-Date=${today}
+Built-By=${user.name}
+Implementation-Vendor=${project.groupId}
+Vendor-url=${project.url}
+GIT-Build-galigeo-print-server=${GIT-Build-galigeo-print-server}
+GIT_BRANCH=${GIT_BRANCH}
+JENKINS-Build=${JENKINS-Build}
