@@ -137,3 +137,15 @@ Find below some examples.
  - Remove image from container registry
 
  **docker rmi <IMAGE_ID>**
+
+ # Appendix
+ ## List packages installed in galigeo-print-server container
+
+ **docker exec -i <CONTAINER_ID> dpkg -l**
+
+ Output example:\
+*...\
+ii  gnupg-utils                   2.2.40-1.1                     amd64        GNU privacy guard - utility programs\
+ **ii  google-chrome-stable          115.0.5790.110-1               amd64        The web browser from Google**\
+ ii  gpg                           2.2.40-1.1                     amd64        GNU Privacy Guard -- minimalist public key operations\
+ ...*
