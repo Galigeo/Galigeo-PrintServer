@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<groupId>com.galigeo</groupId>
+	<artifactId>galigeo-print-server-package</artifactId>
+	<version>MAIN</version>
+
+	<name>galigeo-print-server</name>
+	<url>https://www.galigeo.com</url>
+
+	<properties>
+		<today>${maven.build.timestamp}</today>
+		<maven.build.timestamp.format>dd-MM-yyyy HH:mm:ss</maven.build.timestamp.format>
+		<target.gggo.release>G23 and greater</target.gggo.release>
+
+		<docker.image.folder>C:/Tests/Galigeo-PrintServer-Docker-Image/target</docker.image.folder>
+
+		<pdf.doc.home>C:/Tests/_DOC/_tests/pdf/50-Galigeo_Print_Server</pdf.doc.home>
+		<pdf.doc.version>G23</pdf.doc.version>
+
+		<package.temp.folder>target/package</package.temp.folder>
+		<package.name>GaligeoPrintServer_G23</package.name>
+	</properties>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+
+					<execution>
+						<id>do.package</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<mkdir dir="${package.temp.folder}" />
+
+								<copy overwrite="yes" verbose="yes"
+									file="${docker.image.folder}/galigeo-print-server.tar"
+									tofile="${package.temp.folder}/galigeo-print-server.tar" />
+
+								<copy overwrite="yes" verbose="yes"
+									file="${docker.image.folder}/version.txt"
+									tofile="${package.temp.folder}/version.txt" />
+
+								<mkdir dir="${package.temp.folder}/Documentation" />
+								<copy verbose="true"
+									todir="${package.temp.folder}/Documentation">
+									<fileset dir="${pdf.doc.home}/${pdf.doc.version}" />
+								</copy>
+
+								<zip destfile="target/${package.name}.zip">
+									<zipfileset dir="${package.temp.folder}"
+										prefix="${package.name}" />
+								</zip>
+
+								<checksum file="target/${package.name}.zip"
+									forceOverwrite="yes" fileext=".sha512.txt" algorithm="SHA-512" />
+
+							</target>
+						</configuration>
+					</execution>
+
+				</executions>
+
+				<dependencies>
+					<dependency>
+						<groupId>commons-net</groupId>
+						<artifactId>commons-net</artifactId>
+						<version>1.4.1</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.ant</groupId>
+						<artifactId>ant-commons-net</artifactId>
+						<version>1.8.1</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>
