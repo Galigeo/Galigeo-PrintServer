@@ -14,8 +14,7 @@
 	<properties>
 		<today>${maven.build.timestamp}</today>
 		<maven.build.timestamp.format>dd-MM-yyyy HH:mm:ss</maven.build.timestamp.format>
-		<target.gggo.release>G23 and greater</target.gggo.release>
-
+		
 		<docker.image.folder>C:/Tests/Galigeo-PrintServer-Docker-Image/target</docker.image.folder>
 
 		<pdf.doc.home>C:/Tests/_DOC/_tests/pdf/50-Galigeo_Print_Server</pdf.doc.home>
