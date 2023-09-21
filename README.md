@@ -24,10 +24,10 @@ To know Docker version, run:
 
 - Run it in container:
 
-~~**docker run --rm -p 3000:3000 galigeo-print-server**~~
+~~**docker run  -p 3000:3000 galigeo-print-server**~~
 --> Prefer the one with the more efficient log driver:
 
-**docker run --rm -p 3000:3000 --log-driver local galigeo-print-server**
+**docker run  -p 3000:3000 --log-driver local galigeo-print-server**
 
 ## 2.3 How to build docker image **galigeo-print-server.tar**  and run it in another docker ?
 
@@ -50,10 +50,10 @@ To know Docker version, run:
 
 - Run it in container:
 
-~~**docker run --rm -p 3000:3000 galigeo-print-server**~~
+~~**docker run  -p 3000:3000 galigeo-print-server**~~
 --> Prefer the one with the more efficient log driver:
 
-**docker run --rm -p 3000:3000 --log-driver local galigeo-print-server**
+**docker run  -p 3000:3000 --log-driver local galigeo-print-server**
 
 # 3. Test server is running
 http://\<**print-server-name-or-ip**\>:3000/alive
@@ -71,7 +71,7 @@ By default Docker uses the "json-file" log driver:
 
 ### A - **How to run galigeo-print-server with "local" log driver ?**
 
-**docker run --rm -p 3000:3000 *--log-driver local* galigeo-print-server**
+**docker run  -p 3000:3000 *--log-driver local* galigeo-print-server**
 
 Info - default configuration for "local" log driver is:
 - **max-size=20m**
@@ -81,7 +81,7 @@ Info - default configuration for "local" log driver is:
 
 Find below an example that overrides default config:
 
-docker run --rm -p 3000:3000 *--log-driver local --log-opt max-size=10m --log-opt max-file=3 --log-opt compress=false* galigeo-print-server
+docker run  -p 3000:3000 *--log-driver local --log-opt max-size=10m --log-opt max-file=3 --log-opt compress=false* galigeo-print-server
 
 ### B - **How to get the log driver** used by galigeo-print-server container ? 
 
