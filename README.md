@@ -149,3 +149,7 @@ ii  gnupg-utils                   2.2.40-1.1                     amd64        GN
  **ii  google-chrome-stable          115.0.5790.110-1               amd64        The web browser from Google**\
  ii  gpg                           2.2.40-1.1                     amd64        GNU Privacy Guard -- minimalist public key operations\
  ...*
+
+ ## Access galigeo-print-server container terminal (from host)
+
+ **docker exec -it <CONTAINER_ID> /bin/bash**
