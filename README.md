@@ -120,7 +120,7 @@ Find below some examples.
 **docker logs --timestamps --since 45m <CONTAINER_ID> > galigeo-print-server.log**
  
  # 5. Docker clean up
- ## 5.1 Stop galigeo-print-server container
+ ## 5.1 Stop and remove galigeo-print-server container
  - Get galigeo-print-server <CONTAINER_ID>
  
  **docker ps** or **docker ps -a -q  --filter ancestor=galigeo-print-server**
@@ -128,6 +128,10 @@ Find below some examples.
  - Stop galigeo-print-server container
 
 **docker stop <CONTAINER_ID>**
+
+- Remove galigeo-print-server container
+
+**docker rm <CONTAINER_ID>**
 
  ## 5.2 Remove galigeo-print-server image
  - Get galigeo-print-server <IMAGE_ID>
