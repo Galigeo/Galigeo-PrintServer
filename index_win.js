@@ -29,6 +29,7 @@ app.get("/print", async (req, res) => {
     console.log(req.query);
     const width = parseInt(req.query.width) ;
     const height =  parseInt(req.query.height);
+    const printTimeOut =  parseInt(req.query.print_timeout) ? parseInt(req.query.print_timeout) : 60000;
     const page = await browser.newPage();
     // to add cookie
     console.log(url);
@@ -80,8 +81,8 @@ app.get("/print", async (req, res) => {
     await page.waitForResponse(
       async (response) => {
         //console.log(response.url());
-        if ((first + 60000) < Date.now()) {
-          console.log('force exit afer 60000 ms');
+        if ((first + printTimeOut) < Date.now()) {
+          console.log('force exit afer printTimeOut ms');
           return true;
         }
         if (response.url().includes("cache")) {
