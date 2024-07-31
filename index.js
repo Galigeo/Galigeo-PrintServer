@@ -81,14 +81,19 @@ app.get("/print", async (req, res) => {
   await page.waitForResponse(
     async (response) => {
       //console.log(response.url());
+
+      if (response.url().includes("cache")) {
+        imgIsCached = true;
+        return true;
+      }
+      
+
       if ((first + printTimeOut) < Date.now()) {
         console.log('force exit afer '+printTimeOut+' ms');
         return true;
       }
-      if (response.url().includes("cache")) {
-        imgIsCached = true;
-      }
-      return response.url().includes("cache");
+      
+      return false;
     },
     { timeout: 0 }
   );
