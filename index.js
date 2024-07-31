@@ -82,7 +82,7 @@ app.get("/print", async (req, res) => {
     async (response) => {
       //console.log(response.url());
       if ((first + printTimeOut) < Date.now()) {
-        console.log('force exit afer printTimeOut ms');
+        console.log('force exit afer '+printTimeOut+' ms');
         return true;
       }
       if (response.url().includes("cache")) {
@@ -102,8 +102,8 @@ app.get("/print", async (req, res) => {
     res.send({ message: "Image is in cache folder" });
 	console.log("Image is in cache folder");
   } else {
-    res.send({ message: "time out after 60 s" });
-	console.log("time out after 60 s");
+    res.send({ message: 'time out after '+printTimeOut+' ms'});
+	console.log('time out after '+printTimeOut+' ms');
   }
   //res.send({ message: "Image is in cache folder" });
 } catch (error) {
