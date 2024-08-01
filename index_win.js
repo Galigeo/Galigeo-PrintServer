@@ -51,6 +51,7 @@ app.get("/print", async (req, res) => {
     await page.setViewport({ width: width ? width : 1080, height: height? height :1024 });
     console.log('setViewport');
     const { blue, cyan, green, magenta, red, yellow } = require('colorette')
+    let imgIsCached = false;
     page
       .on('console', message => {
         const type = message.type().substr(0, 3).toUpperCase()
@@ -64,8 +65,16 @@ app.get("/print", async (req, res) => {
         console.log(color(`${type} ${message.text()}`))
       })
       .on('pageerror', ({ message }) => console.log(red(message)))
-      .on('response', response =>
-        console.log(green(`${response.status()} ${response.url()}`)))
+      .on('response', response =>{
+        console.log(green(`${response.status()} ${response.url()}`))
+
+        if (response.url().includes("cache") && response.status()  === 200) {
+          imgIsCached = true;
+          console.log("Image is cached BEFORE waitForResponse(...)")
+        }
+
+      }
+      )
       .on('requestfailed', request =>
         console.log(magenta(`${request.failure().errorText} ${request.url()}`)))
        
@@ -75,22 +84,30 @@ app.get("/print", async (req, res) => {
         waitUntil: "networkidle0",
       }
     );
-    console.log('waitForResponse');
+    console.log('waitForResponse >>');
     const first = Date.now();
-    let imgIsCached = false;
+    
     await page.waitForResponse(
       async (response) => {
-        console.log('waitForResponse - response.url(): '+response.url());
-        //console.log(response.url());
+        //console.log('waitForResponse - response.url(): '+response.url());
         
-        if ((first + printTimeOut) < Date.now()) {
-          console.log('force exit afer '+printTimeOut+' ms');
+        if (imgIsCached) {
+          console.log("waitForResponse - Image is ALREADY cached")
           return true;
         }
-        if (response.url().includes("cache")) {
+        
+        if (response.url().includes("cache") && response.status()  === 200) {
           imgIsCached = true;
+          console.log("waitForResponse - Image is cached INSIDE waitForResponse")
+          return true;
         }
-        return response.url().includes("cache");
+
+        if ((first + printTimeOut) < Date.now()) {
+          console.log('waitForResponse - force exit afer '+printTimeOut+' ms');
+          return true;
+        }
+        
+        return false;
       },
       { timeout: 0 }
     );
