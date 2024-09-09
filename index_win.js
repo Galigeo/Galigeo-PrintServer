@@ -20,7 +20,7 @@ app.get("/print", async (req, res) => {
         "--disable-setuid-sandbox",
         "--disable-gpu",
         "--hide-scrollbars",
-        "--disable-web-security",
+        "--disable-web-security"
       ],
       headless: 'new'
     });
