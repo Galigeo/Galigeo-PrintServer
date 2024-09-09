@@ -1,5 +1,6 @@
 
 const puppeteer = require("puppeteer");
+const config = require('./index_win_config'); // Import the configuration file
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
@@ -14,16 +15,7 @@ app.get("/alive", async (req, res) => {
 });
 app.get("/print", async (req, res) => {
   try {
-    const browser = await puppeteer.launch({
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--disable-gpu",
-        "--hide-scrollbars",
-        "--disable-web-security"
-      ],
-      headless: 'new'
-    });
+    const browser = await puppeteer.launch(config);
     console.log('start call');
     const url = decodeURIComponent(req.query.url);
     console.log(req.query);
