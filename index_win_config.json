@@ -7,5 +7,6 @@
 		"--disable-web-security"
 	],
 	"headless": "new",
+	"http_port": 3000,
 	"executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe"
 }

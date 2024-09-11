@@ -9,9 +9,9 @@ const axios = require("axios");
 app.use(cookieParser());
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.GGO_PRINT_HTTP_PORT || config.http_port || 3000;
 app.get("/alive", async (req, res) => {
-  res.send({ message: "Galigeo Print Server is up and running on container port " + port });
+  res.send({ message: "Galigeo Print Server is up and running on HTTP port " + port });
 });
 app.get("/print", async (req, res) => {
   try {
@@ -125,5 +125,5 @@ app.get("/print", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("Galigeo Print Server is listening on container port " + port);
+  console.log("Galigeo Print Server is listening on HTTP port " + port);
 });
