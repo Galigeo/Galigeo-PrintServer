@@ -1,5 +1,4 @@
 const puppeteer = require("puppeteer");
-const config = require('./index_win_config'); // Import the configuration file
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
@@ -7,31 +6,32 @@ const cookieParser = require("cookie-parser");
 const axios = require("axios");
 app.use(cookieParser());
 
+// Add timestamp to  console.log
 const logTimeStamp = require('log-timestamp');
 logTimeStamp (function() { 
   return '[' + toLocalISOString(new Date()) + '] - %s' 
 });
 
-function toLocalISOString(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0'); // Les mois commencent à 0
-  const day = String(date.getDate()).padStart(2, '0');
-  const hours = String(date.getHours()).padStart(2, '0');
-  const minutes = String(date.getMinutes()).padStart(2, '0');
-  const seconds = String(date.getSeconds()).padStart(2, '0');
-  const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
+require('dotenv').config();
+console.info('Environment: ', process.env);
 
-  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}`;
-};
-
-
-const port = process.env.GGO_PRINT_HTTP_PORT || config.http_port || 3000;
+const port = process.env.PRINT_HTTP_PORT || 3000;
 app.get("/alive", async (req, res) => {
   res.send({ message: "Galigeo Print Server is up and running on HTTP port " + port });
 });
 app.get("/print", async (req, res) => {
   try {
-    const browser = await puppeteer.launch(config);
+    const browser = await puppeteer.launch({
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-gpu",
+        "--hide-scrollbars",
+        "--disable-web-security"
+      ],
+      headless: 'new',
+      executablePath: process.env.CHROME_EXECUTABLE_PATH || '/usr/bin/google-chrome'
+    });
     console.log('start call');
     const url = decodeURIComponent(req.query.url);
     console.log(req.query);
@@ -143,3 +143,15 @@ app.get("/print", async (req, res) => {
 app.listen(port, () => {
   console.log("Galigeo Print Server is listening on HTTP port " + port);
 });
+
+function toLocalISOString(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Les mois commencent à 0
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+  const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
+
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}`;
+};
