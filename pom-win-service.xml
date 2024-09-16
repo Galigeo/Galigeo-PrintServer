@@ -73,12 +73,16 @@
 								</move>
 
 								<copy overwrite="yes" verbose="yes"
+									file=".env"
+									tofile="${build.temp.folder}/.env" />
+
+								<copy overwrite="yes" verbose="yes"
 									file="package-lock.json"
 									tofile="${build.temp.folder}/package-lock.json" />
 
 								<copy overwrite="yes" verbose="yes"
-									file=".env"
-									tofile="${build.temp.folder}/.env" />	
+									file="index.js"
+									tofile="${build.temp.folder}/index.js" />
 
 								<copy verbose="true"
 									todir="${build.temp.folder}">
