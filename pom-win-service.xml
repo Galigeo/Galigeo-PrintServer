@@ -73,8 +73,8 @@
 								</move>
 
 								<copy overwrite="yes" verbose="yes"
-									file="package.json"
-									tofile="${build.temp.folder}/package.json" />
+									file="package-lock.json"
+									tofile="${build.temp.folder}/package-lock.json" />
 
 								<copy verbose="true"
 									todir="${build.temp.folder}">
