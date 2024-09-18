@@ -15,13 +15,14 @@
 		<today>${maven.build.timestamp}</today>
 		<maven.build.timestamp.format>dd-MM-yyyy HH:mm:ss</maven.build.timestamp.format>
 		
-		<docker.image.folder>C:/Tests/Galigeo-PrintServer-Docker-Image/target</docker.image.folder>
+		<binary.file.folder>C:/Tests/Galigeo-PrintServer-Docker-Image/target</binary.file.folder>
+		<binary.file.name>C:/Tests/Galigeo-PrintServer-Docker-Image/target</binary.file.name>
 
 		<pdf.doc.home>C:/Tests/_DOC/_tests/pdf/50-Galigeo_Print_Server</pdf.doc.home>
-		<pdf.doc.version>G23</pdf.doc.version>
+		<pdf.doc.version>G24/docker</pdf.doc.version>
 
-		<package.temp.folder>target/package</package.temp.folder>
-		<package.name>GaligeoPrintServer_G23</package.name>
+		<package.temp.folder>target/docker-package</package.temp.folder>
+		<package.name>GaligeoPrintServer_DockerImage</package.name>
 	</properties>
 
 	<build>
@@ -44,11 +45,11 @@
 								<mkdir dir="${package.temp.folder}" />
 
 								<copy overwrite="yes" verbose="yes"
-									file="${docker.image.folder}/galigeo-print-server.tar"
-									tofile="${package.temp.folder}/galigeo-print-server.tar" />
+									file="${binary.file.folder}/${binary.file.name}"
+									tofile="${package.temp.folder}/${binary.file.name}" />
 
 								<copy overwrite="yes" verbose="yes"
-									file="${docker.image.folder}/version.txt"
+									file="${binary.file.folder}/version.txt"
 									tofile="${package.temp.folder}/version.txt" />
 
 								<mkdir dir="${package.temp.folder}/Documentation" />
