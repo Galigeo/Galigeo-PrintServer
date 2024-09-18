@@ -65,6 +65,8 @@
 
 								<checksum file="target/${package.name}.zip"
 									forceOverwrite="yes" fileext=".sha512.txt" algorithm="SHA-512" />
+									
+								<delete dir="${package.temp.folder}" />	
 
 							</target>
 						</configuration>
