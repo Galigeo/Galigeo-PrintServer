@@ -21,7 +21,7 @@
 		<pdf.doc.home>C:/Tests/_DOC/_tests/pdf/50-Galigeo_Print_Server</pdf.doc.home>
 		<pdf.doc.version>G24/docker</pdf.doc.version>
 
-		<package.temp.folder>target/docker-package</package.temp.folder>
+		<package.temp.folder>target/package</package.temp.folder>
 		<package.name>GaligeoPrintServer_DockerImage</package.name>
 	</properties>
 
