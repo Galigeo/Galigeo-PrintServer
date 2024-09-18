@@ -5,7 +5,7 @@
 
 
 	<groupId>com.galigeo</groupId>
-	<artifactId>galigeo-print-server</artifactId>	
+	<artifactId>galigeo-print-service</artifactId>	
 	<version>MAIN</version>
 
 	<name>galigeo-print-server</name>
@@ -21,7 +21,7 @@
 		
 		
 		<build.temp.folder>target/build</build.temp.folder>
-		<build.zip.name>GaligeoPrintService</build.zip.name>
+		<build.zip.name>galigeo-print-service</build.zip.name>
 		<node.binary.download>node-v20.17.0-win-x64</node.binary.download>
 	</properties>
 
@@ -124,6 +124,8 @@
 									<zipfileset dir="${build.temp.folder}"
 										prefix="${build.zip.name}" />
 								</zip>
+
+								<delete dir="${build.temp.folder}" />
 
 							</target>
 						</configuration>
