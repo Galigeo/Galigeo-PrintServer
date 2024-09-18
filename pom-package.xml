@@ -16,7 +16,7 @@
 		<maven.build.timestamp.format>dd-MM-yyyy HH:mm:ss</maven.build.timestamp.format>
 		
 		<binary.file.folder>C:/Tests/Galigeo-PrintServer-Docker-Image/target</binary.file.folder>
-		<binary.file.name>C:/Tests/Galigeo-PrintServer-Docker-Image/target</binary.file.name>
+		<binary.file.name>galigeo-print-server.tar</binary.file.name>
 
 		<pdf.doc.home>C:/Tests/_DOC/_tests/pdf/50-Galigeo_Print_Server</pdf.doc.home>
 		<pdf.doc.version>G24/docker</pdf.doc.version>
