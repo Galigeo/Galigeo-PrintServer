@@ -21,8 +21,10 @@
 		
 		
 		<build.temp.folder>target/build</build.temp.folder>
-		<build.zip.name>galigeo-print-service</build.zip.name>
-		<node.binary.download>node-v20.17.0-win-x64</node.binary.download>
+		<build.zip.name>GaligeoPrintService</build.zip.name>
+		<node.version>v22.13.0</node.version>
+		<node.binary.download>node-${node.version}-win-x64</node.binary.download>
+		
 	</properties>
 
 	<build>		
@@ -103,7 +105,7 @@
 									<fileset dir="win-resources" />
 								</copy>
 
-								<get src="https://nodejs.org/dist/v20.17.0/${node.binary.download}.zip"
+								<get src="https://nodejs.org/dist/${node.version}/${node.binary.download}.zip"
      								dest="${build.temp.folder}/node.zip"
      								verbose="false"/>
 
