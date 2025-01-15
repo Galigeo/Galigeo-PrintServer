@@ -1,0 +1,1 @@
+docker build . -t galigeo-print-server -f ./Dockerfile

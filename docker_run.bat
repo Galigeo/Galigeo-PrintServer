@@ -1,0 +1,1 @@
+docker run -p 3000:3000 --log-driver local galigeo-print-server
